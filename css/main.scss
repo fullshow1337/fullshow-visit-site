@@ -1,0 +1,225 @@
+@import "modules/libs";
+@import "modules/vars";
+@import "modules/mixins";
+@import "modules/fonts";
+
+html {
+  line-height: $mainLineHeight;
+  font-size: $mainFontSize;
+  color: $default-color;
+  height: 100%;
+  @media screen and (max-width: $desktopWidth) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: $tableWidth) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: $phoneWidth) {
+    font-size: 14px;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $mainFont;
+  font-size: $mainFontSize;
+  font-weight: $mainFontWeight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  flex: 0 0 auto;
+  position: relative;
+  margin: 0 auto;
+  max-width: $desktopWidth;
+  @media screen and (max-width: $smDesktopWidth) {
+    max-width: tableWidth;
+  }
+  @media screen and (max-width: $tableWidth) {
+    max-width: phoneWidth;
+  }
+  @media screen and (max-width: $phoneWidth) {
+    max-width: smPhoneWidth;
+  }
+}
+
+.background video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  cursor: default;
+  z-index: -99;
+}
+
+.preloader {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  position: fixed;
+  justify-content: center;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+
+  z-index: 9999;
+  transition: 1s;
+  visibility: visible;
+  opacity: 1;
+  
+  &-circle {
+    align-self: center;
+    width: 60px;
+    height: 60px;
+    border: 6px solid transparent;
+    border-top: 6px solid #f5323c;
+    border-radius: 100%;
+    animation: preloader 500ms linear infinite;
+    
+
+    @keyframes preloader {
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+  }
+
+  &.loaded {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.6)
+  }
+}
+
+.asif-page {
+
+  &-copyright {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    color: #f5323c;
+    font-size: 1rem;
+    font-family: "VT323";
+    z-index: -99;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+  }
+
+  &-info {
+    width: 100%;
+
+    &-play {
+      font-family: 'VT323';
+      font-size: 10rem;
+      cursor: pointer;
+      color: #f5323c;
+      text-align: center;
+      height: 100px;
+      animation: play linear alternate 1s infinite;
+      transition: 200ms;
+
+      @media screen and (max-width: $tableWidth) {
+        font-size: 6rem;
+      }
+
+      @keyframes play {
+        100% {
+          transform: translateY(10px)
+        }
+      }
+    
+      &.is-playing {
+        font-size: 5rem;
+        opacity: 0;
+        visibility: hidden;
+        height: 0px;
+      }
+    }
+    
+    &-title {
+      font-family: "VT323";
+      text-align: center;
+      font-size: 10rem;
+      color: #f5323c;
+      text-shadow: 3px 3px 0 rgba(255, 0, 55, 0.6);
+      transform: scale(0);
+      opacity: 0;
+      visibility: hidden;
+      transition: 300ms;
+
+      @media screen and (max-width: $tableWidth) {
+        font-size: 5rem;
+      }
+
+      @media screen and (max-width: $phoneWidth) {
+        font-size: 4rem;
+      }
+    }
+
+    &-title.title-visible {
+      transform: scale(1);
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &-social {
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: 300ms;
+      transform: rotateY(40deg) translateY(100px);
+
+      &.social-visible {
+        opacity: 1;
+        visibility: visible;
+        transform: rotateY(0deg) translateY(0px);
+      }
+
+      &-item {
+        color: #86262b;
+        text-shadow: 3px 1px 0 rgba(255, 255, 255, 0.2);
+        font-size: 3rem;
+        margin: 0px 10px;
+        transition: 300ms;
+
+        &:hover {
+          transform: translateY(-5px);
+          color: #bd2b32
+        }
+
+        @media screen and (max-width: $tableWidth) {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
