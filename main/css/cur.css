@@ -1,0 +1,45 @@
+html, 
+html *, 
+body, 
+body * {
+  cursor: none;
+}
+.cursor-dot,
+.cursor-dot-outline {
+  mix-blend-mode: normal;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  position: fixed;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+.cursor-dot {
+  z-index:99999999;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(183, 49, 236, 0.72);
+  border: solid;
+  border-radius: 50%;
+  border-width: 0px;
+  border-color: #000;
+}
+
+.cursor-dot-outline {
+  z-index:99999998;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 8, 152, 0.2);
+  border: solid;
+  border-radius: 50%;
+  border-width: 0px;
+  border-color: #000;
+}
